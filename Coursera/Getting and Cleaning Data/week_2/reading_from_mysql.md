@@ -1,6 +1,3 @@
-#
-
-
 | Course        | [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home/welcome) |
 | :---          | :--- |
 | Part          | [Week 2, Storage,  Systems](https://www.coursera.org/learn/data-cleaning/home/week/2) |
@@ -10,24 +7,33 @@
 | Distribution  | [Coursera](https://www.coursera.org) |
 | OS            | Mac OSX High Sierra |
 
-Annoyingly the PDF slides from Coursera are image based instead of text based which means that it is not possible to select the code bits or click the URLS.
+The PDF slides from Coursera are image based instead of text based which means that it is not possible to select the code bits or click the URLS.  
+
+To follow the lecture, I had to reconstruct all the URLs and code snippets anyway and thought they might be useful for others as well
+
+*Links from the slides are at the bottom of this document*
 
 # Storage Systems
 ## MySQL
 #### 1. Install MySQL
 [Install on Mac OS using Native Packages](https://dev.mysql.com/doc/refman/5.7/en/osx-installation-pkg.html)
 #### 2. Setup in R
-* install.packages("RMySQL")
-* library(RMySQL)
+```r
+install.packages("RMySQL")
+library(RMySQL)
+```
 
 #### 3. Try it out in R
-##### Connect to UCSC MySQL server:
+Connect to UCSC MySQL server:
 ```r
-# Connect to the UCSC Genome MySQL server
 ucscDb <- dbConnect(MySQL(), user = "genome", host = "genome-mysql.cse.ucsc.edu")
-# Query the connection for databases - "show databases" is SQL
+```
+Query the connection for databases - "show databases" is SQL
+```r
 result <- dbGetQuery(ucscDb, "show databases;");dbDisconnect(ucscDb)
-# Print out the result
+```
+Print out the result
+```
 head(result)
 ```
 ```

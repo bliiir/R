@@ -12,6 +12,8 @@ The PDF slides from Coursera are image based instead of text based which means t
 
 To follow the lecture, I had to reconstruct all the URLs and code snippets anyway and thought they might be useful for others as well
 
+*Links from the slides are at the bottom of this document*
+
 # Storage Systems
 
 ## HDF5
