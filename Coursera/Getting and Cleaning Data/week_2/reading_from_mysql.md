@@ -1,11 +1,11 @@
 | Course        | [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home/welcome) |
 | :---          | :--- |
 | Part          | [Week 2, Storage,  Systems](https://www.coursera.org/learn/data-cleaning/home/week/2) |
-| Sub           |[Reading from MySQL]() |
+| Class           |[Reading from MySQL](https://www.coursera.org/learn/data-cleaning/lecture/njjbw/reading-from-mysql) |
 | Institution   | [Johns Hopkins University](https://www.jhu.edu/) |
 | Educators     | [Jeff Leek - PhD](https://github.com/jtleek),  [Roger D. Peng - PhD](https://github.com/rdpeng),  [Brian Caffo - PhD](https://github.com/bcaffo) |
 | Distribution  | [Coursera](https://www.coursera.org) |
-| OS            | Mac OSX High Sierra |
+| Lecturer      | [Jeff Leek - PhD](https://github.com/jtleek) |
 
 The PDF slides from Coursera are image based instead of text based which means that it is not possible to select the code bits or click the URLS.  
 

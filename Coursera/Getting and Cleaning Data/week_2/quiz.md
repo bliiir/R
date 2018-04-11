@@ -1,8 +1,8 @@
 | Course        | [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home/welcome) |
 | :---          | :--- |
 | Distribution  | [Coursera](https://www.coursera.org) |
-| Part          | [Week 2, Storage Systems](https://www.coursera.org/learn/data-cleaning/home/week/2) |
-| Lecture       | [Quiz](https://www.coursera.org/learn/data-cleaning/exam/RJBrZ/week-2-quiz) |
+| Class          | [Week 2, Storage Systems](https://www.coursera.org/learn/data-cleaning/home/week/2) |
+| Lecture       |  [Quiz](https://www.coursera.org/learn/data-cleaning/exam/RJBrZ/week-2-quiz) |
 | Institution   | [Johns Hopkins University](https://www.jhu.edu/) |
 | Educators     | [Jeff Leek - PhD](https://github.com/jtleek),  [Roger D. Peng - PhD](https://github.com/rdpeng),  [Brian Caffo - PhD](https://github.com/bcaffo) |
 
@@ -252,7 +252,7 @@ Original source of the data: http://www.cpc.ncep.noaa.gov/data/indices/wksst8110
 
 ## Answer
 
-- [X] 32426.7
+- [X] **32426.7**
 - [ ] 222243.1
 - [ ] 101.83
 - [ ] 28893.3
