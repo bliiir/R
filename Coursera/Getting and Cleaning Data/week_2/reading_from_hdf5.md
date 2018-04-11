@@ -136,13 +136,8 @@ readA
 [5,]    5   10
 ```
 
-
-
-
 #### Links from the video
-```
-http://www.hdfgroup.org/
-http://bioconductor.org/
-http://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.pdf
-http://www.hdfgroup.org/HDF5/
-```
+* http://www.hdfgroup.org/
+* http://bioconductor.org/
+* http://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.pdf
+* http://www.hdfgroup.org/HDF5/

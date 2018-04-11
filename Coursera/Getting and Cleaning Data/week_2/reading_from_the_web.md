@@ -221,13 +221,9 @@ pg1 = GET(handle=google, path = "/")
 pg2 = GET(handle=google, path= "search")
 
 
-
-
 #### Links from the video
-```
-https://www.r-bloggers.com/how-netflix-reverse-engineered-hollywood/
-http://en.wikipedia.org/wiki/Web_scraping
-http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en
-http://cran.r-project.org/web/packages/httr/httr.pdf
-http://www.r-bloggers.com/?s=Web+Scraping
-```
+* https://www.r-bloggers.com/how-netflix-reverse-engineered-hollywood/
+* http://en.wikipedia.org/wiki/Web_scraping
+* http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en
+* http://cran.r-project.org/web/packages/httr/httr.pdf
+* http://www.r-bloggers.com/?s=Web+Scraping

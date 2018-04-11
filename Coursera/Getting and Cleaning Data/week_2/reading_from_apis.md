@@ -51,7 +51,7 @@ Convert it back into json to make it easier to read
 ```r
 json2 <- jsonlite::fromJSON(toJSON(json1))
 ```
-Output the first row of column 1 to 40 to the console
+Output the first row of column 1 to 4 to the console
 ```r
 json2[1, 1:4]
 ```
@@ -66,9 +66,7 @@ created_at           id             id_str
 
 
 #### Links from the video
-```
-https://dev.twitter.com/docs/api/1/get/blocks/blocking
-https://dev.twitter.com/apps
-https://dev.twitter.com/docs/api/1.1/get/search/tweets
-https://dev.twitter.com/docs/api/1.1/overview
-```
+* https://dev.twitter.com/docs/api/1/get/blocks/blocking
+* https://dev.twitter.com/apps
+* https://dev.twitter.com/docs/api/1.1/get/search/tweets
+* https://dev.twitter.com/docs/api/1.1/overview
