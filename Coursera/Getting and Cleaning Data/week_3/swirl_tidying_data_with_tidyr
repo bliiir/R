@@ -1,0 +1,467 @@
+| Course        | [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home/welcome) |
+| :---          | :--- |
+| Lecture       |[Practice Programming Assignment: swirl Lesson 3: Tidying Data with tidyr data](https://www.coursera.org/learn/data-cleaning/programming/JYMiZ/swirl-lesson-3-tidying-data-with-tidyr) |
+| Week          | [ 3 ](https://www.coursera.org/learn/data-cleaning/home/week/3) |
+| Lecturer      | [SWIRL]()) |
+| Educators     | [Jeff Leek - PhD](https://github.com/jtleek),  [Roger D. Peng - PhD](https://github.com/rdpeng),  [Brian Caffo - PhD](https://github.com/bcaffo) |
+| Institution   | [Johns Hopkins University](https://www.jhu.edu/) |
+| Distribution  | [Coursera](https://www.coursera.org) |
+
+# Tidying Data with tidyr
+
+### Tidy data
+First you read about tidy data. ([1][1], [2][2])
+
+> A dataset is a collection of values, usually either numbers (if quantitative) or strings (if
+qualitative). Values are organised in two ways. Every value belongs to a variable and an
+observation. A variable contains all values that measure the same underlying attribute (like
+height, temperature, duration) across units. An observation contains all values measured on
+the same unit (like a person, or a day, or a race) across attributes.
+
+Some distilled nuggets of wisdom:
+
+* A dataset is a collection of values (data frame)
+* Every value belongs to a variable(column) and an
+observation(row)
+
+#### Principles of tidy data{anchor1}:
+
+* One row per observation
+* One column for each variable
+* One table for each kind of variable
+* One variable enabling merging of related tables
+
+### Examples
+
+install the tidyr package - swirl does this for you, but still.
+```r
+install.packages(tidyr)
+```
+
+#### Students
+Check out the 'students' data set
+```r
+students
+```
+```
+  grade male female
+1     A    1      5
+2     B    5      0
+3     C    5      2
+4     D    5      5
+5     E    7      4
+```
+The problem here is that the column headers are values (male, female) rather than variables (gender or sex)
+
+Lets tidy it up according to the four Principles of tidy data:
+```r
+gather(students, sex, count, -grade)
+```
+```
+grade    sex count
+1      A   male     1
+2      B   male     5
+3      C   male     5
+4      D   male     5
+5      E   male     7
+6      A female     5
+7      B female     0
+8      C female     2
+9      D female     5
+10     E female     4
+```
+This is a longer table, but it has one observation per row
+
+#### Students2
+Lets try that with a slightly more complex example
+```r
+students2
+```
+```
+  grade male_1 female_1 male_2 female_2
+1     A      3        4      3        4
+2     B      6        4      3        5
+3     C      7        4      3        8
+4     D      4        0      8        1
+5     E      1        1      2        7
+```
+In this dataset, the column headers are also values and it has multiple variables stored in each column (sex and class > male_1)
+
+```r
+res <- gather(students2, sex_class, count, -grade)
+res
+```
+```
+   grade sex_class count
+1      A    male_1     3
+2      B    male_1     6
+3      C    male_1     7
+4      D    male_1     4
+5      E    male_1     1
+6      A  female_1     4
+7      B  female_1     4
+8      C  female_1     4
+9      D  female_1     0
+10     E  female_1     1
+11     A    male_2     3
+12     B    male_2     3
+13     C    male_2     3
+14     D    male_2     8
+15     E    male_2     2
+16     A  female_2     4
+17     B  female_2     5
+18     C  female_2     8
+19     D  female_2     1
+20     E  female_2     7
+```
+We still need to separate the sex_class into two columns
+```r
+separate(res, sex_class, into = c("sex", "class"))
+```
+```
+   grade    sex class count
+1      A   male     1     3
+2      B   male     1     6
+3      C   male     1     7
+4      D   male     1     4
+5      E   male     1     1
+6      A female     1     4
+7      B female     1     4
+8      C female     1     4
+9      D female     1     0
+10     E female     1     1
+11     A   male     2     3
+12     B   male     2     3
+13     C   male     2     3
+14     D   male     2     8
+15     E   male     2     2
+16     A female     2     4
+17     B female     2     5
+18     C female     2     8
+19     D female     2     1
+20     E female     2     7
+```
+
+The same can be done in one call using pipes:
+```r
+students2 %>%
+  gather(sex_class, count, -grade) %>%
+  separate(sex_class , c("sex", "class")) %>%
+```
+```
+   grade    sex class count
+1      A   male     1     3
+2      B   male     1     6
+3      C   male     1     7
+4      D   male     1     4
+5      E   male     1     1
+6      A female     1     4
+7      B female     1     4
+8      C female     1     4
+9      D female     1     0
+10     E female     1     1
+11     A   male     2     3
+12     B   male     2     3
+13     C   male     2     3
+14     D   male     2     8
+15     E   male     2     2
+16     A female     2     4
+17     B female     2     5
+18     C female     2     8
+19     D female     2     1
+20     E female     2     7
+```
+#### Students3
+Lets look at a third data select
+```r
+students3
+```
+```
+    name    test class1 class2 class3 class4 class5
+1  Sally midterm      A   <NA>      B   <NA>   <NA>
+2  Sally   final      C   <NA>      C   <NA>   <NA>
+3   Jeff midterm   <NA>      D   <NA>      A   <NA>
+4   Jeff   final   <NA>      E   <NA>      C   <NA>
+5  Roger midterm   <NA>      C   <NA>   <NA>      B
+6  Roger   final   <NA>      A   <NA>   <NA>      A
+7  Karen midterm   <NA>   <NA>      C      A   <NA>
+8  Karen   final   <NA>   <NA>      C      A   <NA>
+9  Brian midterm      B   <NA>   <NA>   <NA>      A
+10 Brian   final      B   <NA>   <NA>   <NA>      C
+```
+There are a few things wrong here - the first thing we will fix is that the class1 - class5 columns are actually values. Lets gather them all in one - and lets do it using pipes instead of many steps:
+```r
+students3 %>%
+  gather(class, grade, class1:class5, na.rm = TRUE) %>%
+  spread( , ) %>%
+  print
+```
+```
+    name    test  class grade
+1  Sally midterm class1     A
+2  Sally   final class1     C
+9  Brian midterm class1     B
+10 Brian   final class1     B
+13  Jeff midterm class2     D
+14  Jeff   final class2     E
+15 Roger midterm class2     C
+16 Roger   final class2     A
+21 Sally midterm class3     B
+22 Sally   final class3     C
+27 Karen midterm class3     C
+28 Karen   final class3     C
+33  Jeff midterm class4     A
+34  Jeff   final class4     C
+37 Karen midterm class4     A
+38 Karen   final class4     A
+45 Roger midterm class5     B
+46 Roger   final class5     A
+49 Brian midterm class5     A
+50 Brian   final class5     C
+```
+Thats better. Now lets split the test column up into two columns - midterm and final
+```r
+students3 %>%
+  gather(class, grade, class1:class5, na.rm = TRUE) %>%
+  spread(test, grade) %>%
+  print
+```
+```
+    name  class final midterm
+1  Brian class1     B       B
+2  Brian class5     C       A
+3   Jeff class2     E       D
+4   Jeff class4     C       A
+5  Karen class3     C       C
+6  Karen class4     A       A
+7  Roger class2     A       C
+8  Roger class5     A       B
+9  Sally class1     C       A
+10 Sally class3     C       B
+```
+Now we will use the readr package to parse the class number from the class variable.
+
+First we load the readr library
+```r
+library(readr)
+```
+Then we do a mutate command with the parse_number command inside to strip out the "class" from each value
+```r
+students3 %>%
+    gather(class, grade, class1:class5, na.rm = TRUE) %>%
+    spread(test, grade) %>%
+    mutate(class = parse_number(class)) %>%
+    print
+```
+```
+    name class final midterm
+1  Brian     1     B       B
+2  Brian     5     C       A
+3   Jeff     2     E       D
+4   Jeff     4     C       A
+5  Karen     3     C       C
+6  Karen     4     A       A
+7  Roger     2     A       C
+8  Roger     5     A       B
+9  Sally     1     C       A
+10 Sally     3     C       B
+```
+#### Students4
+Lets look at a new data set - students4
+```r
+students4
+```
+```
+    id  name sex class midterm final
+1  168 Brian   F     1       B     B
+2  168 Brian   F     5       A     C
+3  588 Sally   M     1       A     C
+4  588 Sally   M     3       B     C
+5  710  Jeff   M     2       D     E
+6  710  Jeff   M     4       A     C
+7  731 Roger   F     2       C     A
+8  731 Roger   F     5       B     A
+9  908 Karen   M     3       C     C
+10 908 Karen   M     4       A     A
+```
+Looks pretty good, except that id, name and sex are repeated unnecessarily. This can be a sign that the table has multiple observations. In this case is is. Lets break it up into a simple student_info table containing id, name and sex and another gradebook table containing grades
+```r
+student_info <- students4 %>%
+  select(id, name, sex) %>%
+  unique() %>%
+  print
+```
+```
+   id  name sex
+1 168 Brian   F
+3 588 Sally   M
+5 710  Jeff   M
+7 731 Roger   F
+9 908 Karen   M
+```
+Ok, now for the grades
+```r
+gradebook <- students4 %>%
+    select(id, class, midterm, final) %>%
+    print
+```
+```
+    id class midterm final
+1  168     1       B     B
+2  168     5       A     C
+3  588     1       A     C
+4  588     3       B     C
+5  710     2       D     E
+6  710     4       A     C
+7  731     2       C     A
+8  731     5       B     A
+9  908     3       C     C
+10 908     4       A     A
+```
+Great. We now have two tables - one with the identity and one with the grades connected via the id variable.
+
+#### Passed/failed
+Last example. Check out the passed and failed data frames
+
+```r
+passed
+```
+```
+   name class final
+1 Brian     1     B
+2 Roger     2     A
+3 Roger     5     A
+4 Karen     4     A
+```
+```r
+failed
+```
+```
+   name class final
+1 Brian     5     C
+2 Sally     1     C
+3 Sally     3     C
+4  Jeff     2     E
+5  Jeff     4     C
+6 Karen     3     C
+
+```
+We want to merge the two tables, so lets first add a status column to both tables
+```r
+passed <- mutate(passed, status="passed")
+failed <- mutate(failed, status="failed")
+```
+```r
+passed
+```
+```
+   name class final status
+1 Brian     1     B passed
+2 Roger     2     A passed
+3 Roger     5     A passed
+4 Karen     4     A passed
+```
+```r
+failed
+```
+```
+   name class final status
+1 Brian     5     C failed
+2 Sally     1     C failed
+3 Sally     3     C failed
+4  Jeff     2     E failed
+5  Jeff     4     C failed
+6 Karen     3     C failed
+```
+Great. Looks good - now lets bind them together
+```r
+bind_rows(passed, failed)
+```
+```
+    name class final status
+1  Brian     1     B passed
+2  Roger     2     A passed
+3  Roger     5     A passed
+4  Karen     4     A passed
+5  Brian     5     C failed
+6  Sally     1     C failed
+7  Sally     3     C failed
+8   Jeff     2     E failed
+9   Jeff     4     C failed
+10 Karen     3     C failed
+```
+Great. Now lets try it on a real dataset
+
+#### SAT
+
+Print the sat dataset built in to the lesson
+```r
+sat
+```
+```
+# A tibble: 6 x 10
+  score_range read_male read_fem read_total math_male math_fem math_total write_male write_fem write_total
+  <chr>           <int>    <int>      <int>     <int>    <int>      <int>      <int>     <int>       <int>
+1 700-800         40151    38898      79049     74461    46040     120501      31574     39101       70675
+2 600-690        121950   126084     248034    162564   133954     296518     100963    125368      226331
+3 500-590        227141   259553     486694    233141   257678     490819     202326    247239      449565
+4 400-490        242554   296793     539347    204670   288696     493366     262623    302933      565556
+5 300-390        113568   133473     247041     82468   131025     213493     146106    144381      290487
+6 200-290         30728    29154      59882     18788    26562      45350      32500     24933       57433
+```
+Ok, not select all the columns that do not have "total" in their names, gather the count of all the other columns except score_range into a part_sex variable and finally separate part_sex into part and sex variables
+```r
+sat %>%
+  select(-contains("total")) %>%
+  gather(part_sex, count, -score_range) %>%
+  separate(part_sex, into = c("part", "sex")) %>%
+  print
+```
+```
+# A tibble: 36 x 4
+   score_range part  sex    count
+   <chr>       <chr> <chr>  <int>
+ 1 700-800     read  male   40151
+ 2 600-690     read  male  121950
+ 3 500-590     read  male  227141
+ 4 400-490     read  male  242554
+ 5 300-390     read  male  113568
+ 6 200-290     read  male   30728
+ 7 700-800     read  fem    38898
+ 8 600-690     read  fem   126084
+ 9 500-590     read  fem   259553
+10 400-490     read  fem   296793
+```
+
+```r
+sat %>%
+    select(-contains("total")) %>%
+    gather(part_sex, count, -score_range) %>%
+    separate(part_sex, c("part", "sex")) %>%
+    group_by(part, sex) %>%
+    mutate(total = sum(count), prop = count / total) %>%
+    print
+```
+
+```
+# A tibble: 36 x 6
+# Groups:   part, sex [6]
+   score_range part  sex    count  total   prop
+   <chr>       <chr> <chr>  <int>  <int>  <dbl>
+ 1 700-800     read  male   40151 776092 0.0517
+ 2 600-690     read  male  121950 776092 0.157
+ 3 500-590     read  male  227141 776092 0.293
+ 4 400-490     read  male  242554 776092 0.313
+ 5 300-390     read  male  113568 776092 0.146
+ 6 200-290     read  male   30728 776092 0.0396
+ 7 700-800     read  fem    38898 883955 0.0440
+ 8 600-690     read  fem   126084 883955 0.143
+ 9 500-590     read  fem   259553 883955 0.294
+10 400-490     read  fem   296793 883955 0.336
+# ... with 26 more rows
+```
+
+
+###
+[1]: https://github.com/jtleek/datasharing
+[2]: http://vita.had.co.nz/papers/tidy-data.pdf
