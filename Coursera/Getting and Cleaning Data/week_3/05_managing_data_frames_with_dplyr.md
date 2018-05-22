@@ -1,6 +1,6 @@
 | Course        | [Getting and Cleaning Data](https://www.coursera.org/learn/data-cleaning/home/welcome) |
 | :---          | :--- |
-| Lecture       |[Managing Data Frames with dplyr - Introduction](https://www.coursera.org/learn/data-cleaning/lecture/sXF4A/managing-data-frames-with-dplyr-introduction) |
+| Lecture       |[Managing Data Frames with dplyr](https://www.coursera.org/learn/data-cleaning/lecture/sXF4A/managing-data-frames-with-dplyr-introduction) |
 | Week          | [ 3 ](https://www.coursera.org/learn/data-cleaning/home/week/3) |
 | Lecturer      | [Roger D. Peng - PhD](https://github.com/rdpeng) |
 | Educators     | [Jeff Leek - PhD](https://github.com/jtleek),  [Roger D. Peng - PhD](https://github.com/rdpeng),  [Brian Caffo - PhD](https://github.com/bcaffo) |
@@ -221,7 +221,7 @@ Change the name of (a) column(s)
 
 Apparently it is hard to rename in R without using dplyr. Here is how you do it with dplyr.
 ```r
-First lets just check out the chicago data frame
+# First lets just check out the chicago data frame
 head(chicago[, 1:5], 3)
 ```
 ```
@@ -232,7 +232,7 @@ city tmpd dptp       date pm25tmean2
 ```
 Ok - lets give the columns some better names and print out the result.
 ```r
-
+chicago <- rename(chicago, pm25 = pm25mean2, dewpoint = dptp)
 ```
 ```
     city    tmpd    dewpoint    date        pm25
@@ -405,5 +405,3 @@ This one statement above does all the stuff we did above in several statements
 
 
 ---
-
-#### Links from the video
