@@ -435,6 +435,13 @@ paste0("Holi", "day")
 ```
 [1] "Holiday"
 ```
+Use str_trim() to remove excess whitespace
+```r
+str_trim("     Coffee      ")
+```
+```
+[1] "Coffee"
+```
 
 ---
 
