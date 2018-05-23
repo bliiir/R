@@ -51,6 +51,7 @@ format(d2,"%a %b %d")
 Means format the date d2 as "abbreviated_weekday abbreviated_month day_as_number"
 
 Here are the possible date formats
+
 | code | result |
 | :--- | :--- |
 | %d | day as number (0-31) |
