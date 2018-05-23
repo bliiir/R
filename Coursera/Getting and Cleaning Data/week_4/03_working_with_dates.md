@@ -51,15 +51,15 @@ format(d2,"%a %b %d")
 Means format the date d2 as "abbreviated_weekday abbreviated_month day_as_number"
 
 Here are the possible date formats
-| code | result     |
-| :-- | :-- |
+| code | result |
+| :--- | :--- |
 | %d | day as number (0-31) |
-| %a | abbreviated weekday|
-| %A | unabbreviated weekday|
-| %m | month (00-12)|
-| %b | abbreviated month|
-| %B | unabbrevidated month|
-| %y | 2 digit year|
+| %a | abbreviated weekday |
+| %A | unabbreviated weekday |
+| %m | month (00-12) |
+| %b | abbreviated month |
+| %B | unabbrevidated month |
+| %y | 2 digit year |
 | %Y | four digit year |
 
 ## Creating Dates
