@@ -12,6 +12,7 @@
 
 #### Meta characters
 If inside "" these characters will be interpreted as regex unless they are escaped using a double backslash \\\
+
 | Metacharacter | Nickname |  Effect |
 | :--- | :--- | :--- |
 | ```^``` | carrot | start of the line |
@@ -30,6 +31,7 @@ If inside "" these characters will be interpreted as regex unless they are escap
 
 ## R
 ### Text manipulation
+
 | Command | Description | Example | |
 | :--- | :--- | :--- | :--- |
 | ```tolower(x)``` | changes all characters in x to lowercase | tolower("HelLO") | "hello" |  
