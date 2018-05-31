@@ -69,7 +69,7 @@ seq(along = x)
 ```
 
 ## Subsetting variables
-Use the %in% to seubset those restaurants that are in the Roland Park and Homeland neighborhoods and then append it to the restData by storing it in restData$nearMe
+Use the %in% to subset those restaurants that are in the Roland Park and Homeland neighborhoods and then append it to the restData by storing it in restData$nearMe
 ```r
 restData$nearMe <- restData$neighborhood %in% c("Roland Park", "Homeland")
 ```

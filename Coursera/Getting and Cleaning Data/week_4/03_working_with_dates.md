@@ -12,6 +12,11 @@ The PDF slides from Coursera are image based instead of text based which means t
 Mr. Leek has been so kind as to make the [material](https://github.com/DataScienceSpecialization/courses/tree/master/03_GettingData/04_04_workingWithDates) available on Github as well.
 
 ---
+## Links
+* http://www.r-statistics.com/2012/03/do-more-with-dates-and-times-in-r-with-lubridate-1-1-0/
+* http://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html
+
+---
 
 # Working with Dates
 ```r
@@ -105,3 +110,59 @@ julian(d2)
     [1] "1970-01-01"
 
 So, d2 is 17674 days after the origin date. (Argh. I am almost that old)
+
+## Lubridate
+### Dates
+
+Install Lubridate
+```r
+install.packages("lubridate")
+```
+Load the Lubridate library
+```r
+library(lubridate)
+```
+Now lets try some stuff with dates
+ymd = year month day
+```r
+ymd("20140108")
+```
+    [1] "2014-01-08"
+
+```r
+mdy("01/08/2014")
+```
+    [1] "2014-01-08"
+```r
+dmy("08/01/2014")
+```
+    [1] "2014-01-08"
+
+### Time
+
+```r
+ymd_hms("2014-01-08 10:15:20")
+```
+```
+[1] "2014-01-08 10:15:20 UTC"
+```
+```r
+ymd_hms("2011-08-03 10:15:03",tz="Pacific/Auckland")
+```
+    [1] "2011-08-03 10:15:03 NZST"
+
+
+```r
+# Set x to be the a list of dates
+x = dmy(c("1jan2013", "2jan2013", "31mar2013", "30jul2013"))
+# use the wday function on the first element of the list
+wday(x[1])
+```
+    [1] 3
+```r
+wday(x[1],label=TRUE)
+```
+```
+[1] Tue
+Levels: Sun < Mon < Tue < Wed < Thu < Fri < Sat
+```
