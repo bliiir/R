@@ -210,7 +210,7 @@ library("plyr")
 ddply(InsectSprays,.(spray),summarize,sum=sum(count))
 ```
 ```
-spray sum
+  spray sum
 1     A 174
 2     B 184
 3     C  25

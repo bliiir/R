@@ -15,8 +15,8 @@ If inside "" these characters will be interpreted as regex unless they are escap
 
 | Metacharacter | Nickname |  Effect |
 | :--- | :--- | :--- |
-| ```^``` | carrot | start of the line |
-| ```$``` | dollar | end of the line |
+| ```^``` | caret | start of line |
+| ```$``` | dollar | end of line |
 | ```[]``` | brackets | either of the characters inside the brackets |
 | ```[^x]``` | bracket carrot bracket | not x |
 | ```x-y```  | hyphen | range from x to y |
