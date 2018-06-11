@@ -9,6 +9,16 @@
 
 ---
 
+## Required material
+| Title | Type | Description |
+| :--- | :--- | :--- |
+| [Link](https://github.com/bliiir/R/tree/master/Coursera/Getting%20and%20Cleaning%20Data/week_4/assignment) | URL | Github repo with scripts performing the analysis |
+| [codebook.md](https://github.com/bliiir/R/blob/master/Coursera/Getting%20and%20Cleaning%20Data/week_4/assignment/codebook.md) | File | A code book that describes the variables, the data, and any transformations or work that you performed to clean up the data |
+| [README.md](https://github.com/bliiir/R/blob/master/Coursera/Getting%20and%20Cleaning%20Data/week_4/assignment/README.md) | File | Explains how all of the scripts work and how they are connected |
+| [run_analysis.R](https://github.com/bliiir/R/blob/master/Coursera/Getting%20and%20Cleaning%20Data/week_4/assignment/run_analysis.R) | File | The R script |
+
+---
+
 # Assignment
 
 One of the most exciting areas in all of data science right now is wearable computing - see for example this article . Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
@@ -27,17 +37,9 @@ You should create one R script called ```run_analysis.R``` that does the followi
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-## Required material
-| Title | Type | Description |
-| :--- | :--- | :--- |
-| [Link]() | URL | Github repo with scripts performing the analysis |
-| codebook.md | File | A code book that describes the variables, the data, and any transformations or work that you performed to clean up the data |
-| README.md | File | Explains how all of the scripts work and how they are connected |
-| [run_analysis.R]() | File | The R script |
-
 ---
 
-# What the script does
+# What the ```run_analysis.R``` script does
 *(Table of contents)*
 
 1. Get the data from the web
@@ -50,7 +52,7 @@ You should create one R script called ```run_analysis.R``` that does the followi
 
 ---
 
-# Solution
+# Solution walkthrough
 ## Part 1 - Get the data from the web
 ```r
 # Clear the workspace
