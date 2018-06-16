@@ -207,7 +207,7 @@ cols <- grep("std|mean|subject|set|activity", names(full))
 At this point it turned out that the variable names in the feature set were preventing me from doing some regex operations. Apparently, R does not recognize a difference between for example "fBodyAcc-bandsEnergy()-25,48" and "fBodyAcc-bandsEnergy()-1,8", which throws the following error when using the select function:
 >"Error: `data` must be uniquely named but has duplicate elements"
 
-so I need to fix that and tidy the variable names by removing parenthesis, dash
+so I need to fix that and tidy the variable names by replacing parenthesis, dashes, commas and periods with underscores
 
 ```r
 ## Tidy up the names to enable subsetting
@@ -232,10 +232,7 @@ Now for the last bit - average each feature for each subject and activity:
 ## Part 6 - average the data
 ```r
 # Create a tidy dataset
-# First take the mean of the feature columns
-tidy <- ddply(small, c("subject","activity", "set"), numcolwise(mean))
-# Then split the data by activity so I get 6 subtables with the means for each subject
-tidy <- split(tidy, tidy$activity)
+tidy <- ddply(small, c("subject","activity"), numcolwise(mean))
 ```
 That takes care of the last part of the assignment:
 5. "From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject."

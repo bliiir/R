@@ -97,10 +97,7 @@ names(full) <- gsub("_$", "", names(full))
 small <- select(full, cols)
 
 # Create a tidy dataset
-# First take the mean of the feature columns
-tidy <- ddply(small, c("subject","activity", "set"), numcolwise(mean))
-# Then split the data by activity so I get 6 subtables with the means for each subject
-tidy <- split(tidy, tidy$activity)
+tidy <- ddply(small, c("subject","activity"), numcolwise(mean))
 
 # Finally write the table to a file to document the script works
 write.table(tidy, file="tidy.txt")
