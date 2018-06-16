@@ -24,7 +24,7 @@ This data in tidy.txt is the result of a merger of the train and test data and s
 
 ---
 
-## Files in this derived dataset
+## Resources in this derived dataset
 
 The resources included in this, derived dataset are as follows:
 
