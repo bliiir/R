@@ -38,7 +38,7 @@ The resources included in this, derived dataset are as follows:
 
 ---
 
-## Files used to produce the tidy.txt 20Dataset
+## Files used to produce the tidy.txt Dataset
 
 The data in the "tidy.txt" dataset is a merger of the following files:
 
